@@ -3,7 +3,12 @@ import React, {
   useReducer,
 } from 'react';
 
-export const Store = createContext({});
+interface IStore {
+  state?: any;
+  dispatch?: any;
+}
+
+export const Store = createContext<IStore>({});
 
 type Props = {
   children: React.ReactNode;
@@ -33,9 +38,11 @@ const initialState = {
 
 const StoreProvider: React.FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const value = { state, dispatch };
+  // const value = { state, dispatch };
 
-  return <Store.Provider value={{ value }}>{children}</Store.Provider>;
+  return (
+    <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>
+  );
 };
 
 export default StoreProvider;

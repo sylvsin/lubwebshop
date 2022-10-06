@@ -43,3 +43,8 @@
     1. create Rating component
     2. create Product component
     3. use Rating component in Product component
+12. Implement Add To Cart
+    1. Create React Context
+    2. define reducer
+    3. create store provider
+    4. implement add to cart button handler
