@@ -4,9 +4,14 @@ import React, {
 } from 'react';
 
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import { Helmet } from 'react-helmet-async';
 
 // import data from '../data';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
+import Product from '../components/Product';
 
 export interface IProduct {
   name: string;
@@ -59,31 +64,25 @@ const HomeScreen: React.FC = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>LubWebShop</title>
+      </Helmet>
       <h1>T-Shirts</h1>
       <div className="products">
         {loading ? (
-          <div>Loading...</div>
+          <LoadingBox />
         ) : error ? (
-          <div>{error}</div>
+          <MessageBox variant="danger">{error}</MessageBox>
         ) : (
-          products.map((product: IProduct) => {
-            return (
-              <div className="product" key={product.slug}>
-                <Link to={`/product/${product.slug}`}>
-                  <img src={product.image} alt={product.name} />
-                </Link>
-                <div className="product-info">
-                  <Link to={`/product/${product.slug}`}>
-                    <p>{product.name}</p>
-                  </Link>
-                  <p>
-                    <strong>${product.price}</strong>
-                  </p>
-                  <button>Add to cart</button>
-                </div>
-              </div>
-            );
-          })
+          <Row>
+            {products.map((product: IProduct) => {
+              return (
+                <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3">
+                  <Product product={product}></Product>
+                </Col>
+              );
+            })}
+          </Row>
         )}
       </div>
     </div>
