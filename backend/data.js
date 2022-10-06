@@ -1,6 +1,7 @@
 const data = {
   products: [
     {
+      _id: '1',
       name: 'Nike dark',
       slug: 'nike-dark',
       category: 'Tshirts',
@@ -13,6 +14,7 @@ const data = {
       description: 'high quality t-shirt',
     },
     {
+      _id: '2',
       name: 'Adidas',
       slug: 'Adidas-white',
       category: 'Tshirts',
@@ -25,6 +27,7 @@ const data = {
       description: 'high quality t-shirt',
     },
     {
+      _id: '3',
       name: 'Nike white',
       slug: 'Nike-white',
       category: 'Shirts',
@@ -37,6 +40,7 @@ const data = {
       description: 'high quality t-shirt',
     },
     {
+      _id: '4',
       name: 'Striped',
       slug: 'Striped-shirt',
       category: 'Shirts',
