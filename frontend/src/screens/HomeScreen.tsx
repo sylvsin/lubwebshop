@@ -12,19 +12,7 @@ import { Helmet } from 'react-helmet-async';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import Product from '../components/Product';
-
-export interface IProduct {
-  name: string;
-  slug: string;
-  category: string;
-  image: string;
-  price: string;
-  countInStock: number;
-  brand: string;
-  rating: number;
-  numReviews: number;
-  description: string;
-}
+import { IProduct } from '../types';
 
 const reducer = (state: any, action: any) => {
   switch (action.type) {

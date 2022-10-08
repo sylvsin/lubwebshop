@@ -3,6 +3,8 @@ import React, {
   useReducer,
 } from 'react';
 
+import { IProduct } from './types';
+
 interface IStore {
   state?: any;
   dispatch?: any;
@@ -28,16 +30,28 @@ const reducer = (state: any, action: any) => {
           )
         : [...state.cart.cartItems, newItem];
 
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
       return { ...state, cart: { ...state.cart, cartItems } };
+
+    case 'CART_REMOVE_ITEM': {
+      const cartItems = state.cart.cartItems.filter(
+        (item: IProduct) => item._id !== action.payload._id
+      );
+
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      return { ...state, cart: { ...state.cart, cartItems } };
+    }
 
     default:
       return state;
   }
 };
 
+const localeData = localStorage.getItem('cartItems');
 const initialState = {
   cart: {
-    cartItems: [],
+    cartItems: localeData ? JSON.parse(localeData) : [],
   },
 };
 

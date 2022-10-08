@@ -12,7 +12,10 @@ import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Row from 'react-bootstrap/Row';
 import { Helmet } from 'react-helmet-async';
-import { useParams } from 'react-router-dom';
+import {
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
@@ -35,6 +38,7 @@ const reducer = (state: any, action: any) => {
 };
 
 const ProductScreen: React.FC = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const { slug } = params;
 
@@ -74,6 +78,7 @@ const ProductScreen: React.FC = () => {
       type: 'CART_ADD_ITEM',
       payload: { ...product, quantity },
     });
+    navigate('/cart');
   };
 
   return loading ? (

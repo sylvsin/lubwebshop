@@ -45,3 +45,8 @@
     3. use Rating component in Product component
 12. Implement Add To Cart 1. Create React Context 2. define reducer 3. create store provider 4. implement add to cart button handler
     13.Complete Add To Cart 1. check exist item in the cart 2. check count in stock in backend
+13. Create Cart Screen 1. create 2 columns 2. display items list 3. create action column
+    14.Complete Cart Screen
+14. click handler for inc/dec item
+15. click handler for remove item
+16. click handler for checkout
